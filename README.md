@@ -1,1 +1,2 @@
-# query-monitor-save-post-queries
+# Query Monitor Save Post POST Request Queries
+This is a Query Monitor extension that adds any POST request queries made during the save post event (wp_redirect action, to be specific) to the Query Monitor UI.
