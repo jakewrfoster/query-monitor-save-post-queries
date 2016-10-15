@@ -1,6 +1,6 @@
 <?php
 /**
- * Output_Post_Request_Queries.php
+ * Output_Save_Post_Queries.php
  *
  * @created     10/14/16 3:09 PM
  * @author      Alley Interactive
@@ -8,9 +8,9 @@
  * @description Output HTML POST request HTML
  *
  */
-namespace QMPRQ;
+namespace QMSPQ;
 
-class Output_Post_Request_Queries extends \QM_Output_Html_DB_Queries {
+class Output_Save_Post_Queries extends \QM_Output_Html {
 
 	public function __construct( \QM_Collector $collector ) {
 		parent::__construct( $collector );
@@ -36,7 +36,12 @@ class Output_Post_Request_Queries extends \QM_Output_Html_DB_Queries {
 				<tbody>
 				<tr>
 					<td class="qm-ltr">
-						<?php echo absint( $data['post_request_queries_count'] ); ?>
+						<?php echo absint( $data['save_post_queries_count'] ); ?>
+						<?php
+						foreach ( $data['save_post_queries'] as $query ) {
+							var_dump( $query );
+						}
+						?>
 					</td>
 				</tr>
 				</tbody>
@@ -51,7 +56,7 @@ class Output_Post_Request_Queries extends \QM_Output_Html_DB_Queries {
 	 * @return array
 	 */
 	public function admin_class( array $class ) {
-		$class[] = 'qm-' . QMPRQ_COLLECTOR_NAME;
+		$class[] = 'qm-' . QMSPQ_COLLECTOR_NAME;
 
 		return $class;
 	}
@@ -61,8 +66,8 @@ class Output_Post_Request_Queries extends \QM_Output_Html_DB_Queries {
 		$data = $this->collector->get_data();
 
 		$menu[] = $this->menu( array(
-			'id'    => 'qm-' . QMPRQ_COLLECTOR_NAME,
-			'href'  => '#qm-' . QMPRQ_COLLECTOR_NAME,
+			'id'    => 'qm-' . QMSPQ_COLLECTOR_NAME,
+			'href'  => '#qm-' . QMSPQ_COLLECTOR_NAME,
 			'title' => sprintf( __( 'POST request queries (%s)', 'query-monitor' ), $data['post_request_queries_count'] ),
 		) );
 
