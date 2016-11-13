@@ -86,6 +86,12 @@ function qmspq_plugin_setup() {
 
 		return $output;
 	}, 101, 2 );
+
+	// Load admin scripts
+	add_action( 'admin_enqueue_scripts', function() {
+		wp_enqueue_script( 'qmspq-admin-js', QMSPQ_ASSET_URL . '/js/save-post-queries.js', array( 'jquery' ), QMSPQ_ASSETS_VERSION, true );
+	} );
+
 }
 
 add_action( 'after_setup_theme', 'qmspq_plugin_setup' );
