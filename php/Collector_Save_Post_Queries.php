@@ -46,7 +46,7 @@ class Collector_Save_Post_Queries extends \QM_Collector_DB_Queries {
 	public function __construct() {
 		$this->set_transient_exp_time();
 		add_action( 'save_post', [ $this, 'is_doing_save' ], 11 );
-		add_filter( 'save_post', [ $this, 'qmspq_processor' ] );
+		add_action( 'save_post', [ $this, 'qmspq_processor' ], 12 );
 
 		parent::__construct();
 	}
