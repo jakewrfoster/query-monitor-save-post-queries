@@ -76,17 +76,16 @@ class Output_Save_Post_Queries extends \QM_Output_Html_DB_Queries {
 				</tr>
 				</thead>
 				<tbody>
-				<tr>
-					<td class="qm-ltr">
-						<?php
-						echo sprintf( esc_html__( 'Total number of expensive save post queries: %d', 'query-monitor' ), count( $data['expensive'] ) );
-
-						if ( ! empty( $data['expensive'] ) ) {
+				<?php if ( ! empty( $data['expensive'] ) ) : ?>
+					<tr>
+						<td class="qm-ltr">
+							<?php
+							echo sprintf( esc_html__( 'Total number of expensive save post queries: %d', 'query-monitor' ), count( $data['expensive'] ) );
 							$this->output_expensive_queries( $data['expensive'] );
-						}
-						?>
-					</td>
-				</tr>
+							?>
+						</td>
+					</tr>
+				<?php endif; ?>
 				<?php if ( ! empty( $data['dbs'] ) && is_array( $data['dbs'] ) ) : ?>
 					<tr class="all-save-post-queries-row">
 						<td class="qm-ltr">
