@@ -14,6 +14,12 @@ namespace QMSPQ;
 class Collector_Save_Post_Queries extends \QM_Collector_DB_Queries {
 	public $id = QMSPQ_COLLECTOR_NAME;
 
+	/**
+	 * Replicating this as public accessible in
+	 * order to overwrite the $data property in
+	 * the Output class.
+	 * @var array
+	 */
 	public $data = array(
 		'types'           => array(),
 		'component_times' => array(),
