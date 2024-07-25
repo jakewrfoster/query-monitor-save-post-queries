@@ -86,21 +86,8 @@ class Output_Save_Post_Queries extends \QM_Output_Html_DB_Queries {
 						</td>
 					</tr>
 				<?php endif; ?>
-				<?php if ( ! empty( $data['dbs'] ) && is_array( $data['dbs'] ) ) : ?>
-					<tr class="all-save-post-queries-row">
-						<td class="qm-ltr">
-							<div class="all-save-post-queries-wrapper" style="padding: 30px 0;">
-								<button><?php esc_html_e( 'Show/hide all save post queries', 'query-monitor' ); ?></button>
-								<div class="all-save-post-queries hidden">
-									<?php
-										foreach ( $data['dbs'] as $name => $db ) {
-											$this->output_queries( $name, $db, $data );
-										}
-									?>
-								</div>
-							</div>
-						</td>
-					</tr>
+				<?php if ( ! empty( $data ) ) : ?>
+					<?php $this->output_queries( $data ); ?>
 				<?php endif; ?>
 				</tbody>
 			</table>
@@ -128,11 +115,11 @@ class Output_Save_Post_Queries extends \QM_Output_Html_DB_Queries {
 			return $menu;
 		}
 
-		$menu[] = $this->menu( array(
+		$menu['qm-save_post_queries'] = $this->menu( [
 			'id'    => 'qm-' . QMSPQ_COLLECTOR_NAME,
 			'href'  => '#qm-' . QMSPQ_COLLECTOR_NAME,
 			'title' => sprintf( __( 'Save post queries (%s)', 'query-monitor' ), absint( $this->save_post_queries_data['save_post_queries_count'] ) ),
-		) );
+		] );
 
 		return $menu;
 	}
